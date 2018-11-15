@@ -1,0 +1,22 @@
+.AdminPage {
+
+}
+
+
+.TagsInput ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.TagsInput li  {
+  display: inline-block;
+  padding: 5px 16px;
+  background: #34495e;
+  color: white;
+  text-align: center;
+  margin: 4px;
+  border-radius: 50px;
+}

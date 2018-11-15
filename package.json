@@ -3,9 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.3",
+    "history": "^4.7.2",
+    "lodash": "^4.17.11",
     "react": "^16.6.3",
+    "react-autocomplete": "^1.8.1",
+    "react-autosuggest": "^9.4.2",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-icons": "^3.2.2",
+    "react-scripts": "2.1.1",
+    "react-select": "^2.1.1",
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

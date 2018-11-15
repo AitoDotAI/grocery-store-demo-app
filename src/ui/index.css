@@ -1,0 +1,61 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* typography */
+
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3.998rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.827rem;
+  margin-bottom: 1.4rem;
+}
+
+h3 {
+  font-size: 1.999rem;
+  margin-bottom: 1.3rem;
+}
+
+h4 {
+  font-size: 1.414rem;
+  margin-bottom: 1.2rem;
+}
+
+/* global default styles */
+
+a, a:visited, a:hover {
+  color: #0077FF;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

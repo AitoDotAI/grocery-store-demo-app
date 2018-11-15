@@ -1,0 +1,38 @@
+.ProductList {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  min-height: 40px;
+}
+
+.ProductList .ProductListItem {
+  margin-bottom: 20px;
+}
+
+.ProductList__empty {
+  color: #777;
+}
+
+.fade-enter {
+  opacity: 0.01;
+  transform: scaleY(0.7) translateY(35px);
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: scaleY(1) translateY(0px);
+  transition: opacity 250ms ease, transform 200ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0px);
+  transform-origin: 50% 0%;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transform: scale(0.95) translateY(-5px);
+  transform-origin: 50% 0%;
+  transition: opacity 300ms ease, transform 400ms ease;
+}

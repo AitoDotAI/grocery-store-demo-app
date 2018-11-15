@@ -1,0 +1,41 @@
+{
+  "schema": {
+    "users": {
+      "type":"table",
+      "columns": {
+        "id"       : { "type" : "String" }
+      }
+    },
+
+    "products": {
+      "type":"table",
+      "columns": {
+        "id"          : { "type": "String" },
+        "name"        : { "type": "Text",  "analyzer": "English" },
+        "category"    : { "type": "String" },
+        "price"       : { "type": "Decimal"},
+        "tags"        : { "type": "Text", "analyzer" : "Whitespace" }
+      }
+    },
+
+    "userBehavior" : {
+      "type":"table",
+      "columns": {
+         "id"     : { "type" : "String" },
+         "user"   : { "type" : "String", "link":"users.id" },
+         "basket"      : { "type" : "String", "analyzer" : "Whitespace" },
+         "query"       : { "type" : "String", "analyzer" : "English" }
+      }
+    },
+
+    "decisions" : {
+      "type":"table",
+      "columns": {
+        "behavior" : { "type": "String", "link":"userBehavior.id" },
+        "product"  : { "type" : "String", "link":"products.id" },
+        "purchase" : { "type" : "Boolean" }
+      }
+    }
+
+  }
+}

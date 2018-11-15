@@ -1,0 +1,14 @@
+.CartPage {
+
+}
+
+.CartPage__back-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.CartPage__back-link svg {
+  margin-right: 5px;
+}

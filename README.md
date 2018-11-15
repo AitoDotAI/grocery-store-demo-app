@@ -1,44 +1,129 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Aito Grocery Store Demo App
 
-## Available Scripts
+## Background
+This demo app has been created by Aito.ai for the purpose of showing features and functionalities of the [Aito.ai managed machine learning database](https://aito.ai).
+The application was originally created for [Hacktalks Helsinki, on November the 22nd of November 2018](https://www.hacktalks.fi/). The app is for demonstration purposes only, so many
+special cases and error handling have been omitted in favour of readability and simplicity.
 
-In the project directory, you can run:
+The software is licensed under the Apache 2 license, so it can be cloned and modified at will. It can therefore be used as a template Aito client application.
+We accept pull requests in case you find something obvious missing or broken.
 
-### `npm start`
+## The exercise
+The application acts as a template for the Hacktalks workshop. The purpose is to have a _very simple_, yet somewhat useful application, which we make progressively smarter
+by moving over the functionality to Aito. The aim is to show how easy it is to improve the application by using Aito.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The data
+For the scope of this exercise, there is only a limited data set with 42 products available. The low number of products is intentional to restrict the scope and
+make the examples easy to understand. Applying machine learning to such a limited set of products comes with certain restrictions, and the results reflect these facts.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You can see the full product list via this link: https://github.com/AitoDotAI/grocery-store-demo-app/blob/master/src/data/products.json
 
-### `npm test`
+The aim of this demo is not to show you how Aito is able to handle large datasets, but rather how a very basic grocery store app could be built and made intelligent by using Aito.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Data setup diagram](./design/aito-grocery-store.svg)
 
-### `npm run build`
+| Table  | Description | Number of entries |
+| ------------- | ------------- |:------:|
+| users  | All known users. Key users: `larry`, `veronica`, `alice` | 67 |
+| products  | All the products sold in the store | 42 |
+| userBehavior  | "Analytics" data with user actions in a given setting  | 3805 |
+| decisions  | Individual decisions for products   | 63341 |
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Setting
+The exercises are focussing on these features:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Recommendations based on the users’ previous shopping behaviour
+- Dynamic recommendations – Aito won’t show you any recommendations if the products are already in your shopping basket
+- Smart search: Aito recognises the users’ dietary restrictions and preferences, and shows search results accordingly
+   - E.g. when lactose-free Larry search for milk, only lactose-free options are shown
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Links:**
 
-### `npm run eject`
+* [API Documentation](https://aito-grocery-store.api.aito.ai/docs/v1/api/index.html)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Exercise 1: Smart search
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Open 01-search.js
+* Edit the code to execute an Aito query, below you can find an example query
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+```js
+import axios from 'axios'
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+export function getProductSearchResults(userId, inputValue) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_search', {
+    from: 'products',
+    where: {
+      $or: [
+        { name: { $match: inputValue } },
+        { tags: { $match: inputValue } }
+      ]
+    },
+    limit: 5
+  }, {
+    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+  })
+    .then(response => {
+      return response.data.hits
+    })
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Exercise 2: Recommend products
+
+* Open 02-recommend.js
+* Edit the code to execute an Aito query, below you can find an example query
+
+
+```js
+import axios from 'axios'
+
+export function getRecommendedProducts(userId, currentShoppingBasket, count) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
+    from: 'decisions',
+    where: {
+      'product.id': {
+        $and: currentShoppingBasket.map(item => ({ $not: item.id })),
+      }
+    },
+    recommend: 'product',
+    goal: { 'purchase': true },
+    limit: count
+  }, {
+    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+  })
+    .then(result => {
+      return result.data.hits
+    })
+}
+```
+
+
+## Exercise 3: Get tag suggestions
+
+* Open 03-get-tag-suggestions.js
+* Edit the code to execute an Aito query, below you can find an example query
+
+
+```js
+import axios from 'axios'
+
+export function getTagSuggestions(productName) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_predict', {
+    from: 'products',
+    where: {
+      name: productName
+    },
+    predict: 'tags',
+    exclusiveness: false,
+    limit: 3
+  }, {
+    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+  })
+    .then(response => {
+      return response.data.hits.map(hit => hit.feature)
+    })
+}
+```

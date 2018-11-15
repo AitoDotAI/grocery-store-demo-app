@@ -1,0 +1,17 @@
+.ProductSearch {
+  width: 100%;
+}
+
+.ProductSearch .ProductList {
+  margin-bottom: 80px;
+}
+
+.ProductSearch__input {
+  width: 100%;
+  padding: 10px 20px;
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
