@@ -1,5 +1,13 @@
 # Aito Grocery Store Demo App
 
+**Install**:
+
+* Install https://nodejs.org/en/
+* Then go to the project directory and run the following commands
+* `npm install`
+* `npm start`
+
+
 ## Background
 This demo app has been created by Aito.ai for the purpose of showing features and functionalities of the [Aito.ai managed machine learning database](https://aito.ai).
 The application was originally created for [Hacktalks Helsinki, on November the 22nd of November 2018](https://www.hacktalks.fi/). The app is for demonstration purposes only, so many
