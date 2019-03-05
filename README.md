@@ -24,10 +24,18 @@ The application acts as a template for the Hacktalks workshop. The purpose is to
 by moving over the functionality to Aito. The aim is to show how easy it is to improve the application by using Aito.
 
 ### The data
-For the scope of this exercise, there is only a limited data set with 42 products available. The low number of products is intentional to restrict the scope and
-make the examples easy to understand. Applying machine learning to such a limited set of products comes with certain restrictions, and the results reflect these facts.
 
-You can see the full product list via this link: https://github.com/AitoDotAI/grocery-store-demo-app/blob/master/src/data/products.json
+For the scope of this exercise, there is only a limited data set with 42 products available.
+The analytics data has been generated automatically, by simulating a few months of "life".
+See [Data generator](#data-generator) for more. If you want to regenerate the data, see
+[Running generator](#running-generator).
+
+The low number of products is intentional to restrict the scope and
+make the examples easy to understand. Applying machine learning to such a
+limited set of products comes with certain restrictions, and the results
+reflect these facts.
+
+You can see the full product list via this link in [src/data/products.json](src/data/products.json).
 
 The aim of this demo is not to show you how Aito is able to handle large datasets, but rather how a very basic grocery store app could be built and made intelligent by using Aito.
 
@@ -35,14 +43,16 @@ The aim of this demo is not to show you how Aito is able to handle large dataset
 
 ![Data setup diagram](./docs/aito-grocery-store.svg)
 
+The aito schema is at [src/data/schema.json](src/data/schema.json).
+
 <br>
 
 | Table  | Description | Number of entries |
 | ------------- | ------------- |:------:|
-| users  | All known users. Key users: `larry`, `veronica`, `alice` | 67 |
-| products  | All the products sold in the store | 42 |
-| userBehavior  | "Analytics" data with user actions in a given setting  | 3805 |
-| decisions  | Individual decisions for products   | 63341 |
+| users  | All known users. Key users: `larry`, `veronica`, `alice` | 3 |
+| products  | All the products in the store | 42 |
+| sessions  | Each session/visit per user | 168 |
+| impressions  | All products a user has seen in a session, and if they bought it or not.  | 3360 |
 
 
 ### Setting
@@ -241,4 +251,116 @@ export function getTagSuggestions(productName) {
         .map(hit => hit.feature)
     })
 }
+```
+
+
+## Data generator
+
+Source data files are [src/data/products.json](src/data/products.json) and [src/data/preferences.json](src/data/preferences.json).
+
+* `products.json` Contains all products in the shop
+* `preferences.json` Describes a tag-based configuration of what products users like
+
+If you want to regenerate the data, see [Running generator](#running-generator).
+
+### Step 1: weekly schedule
+
+Based on [preferences.json](src/data/preferences.json), we generate a weekly schedule for each user.
+The schedule describes what products the user will purchase each day.
+
+When generating the weekly schedule, we first create a pool of potential products the user might
+purchase on any day. This will be generated based on the `tag` and `howMuchThePersonLikesTheseProducts`
+in the preferences.json. If a tag is not listed in preferences.json, the products with that tag
+won't be added to the pool *(unless the product has another tag which is listed in preferences.json)*.
+
+Number 1 in `howMuchThePersonLikesTheseProducts` means that we'll add each product with that tag
+once to the pool of the potential products the user could purchase. Number 5 would mean we add
+each product 5 times in the potential product pool. As an example, if we had this config:
+
+```json
+[
+  { "tag": "milk", "howMuchPersonLikesTheseProducts": 1 },
+  { "tag": "candy", "howMuchPersonLikesTheseProducts": 2 }
+]
+```
+
+and there would be only 2 products in the whole shop:
+```json
+[
+  { "id": 1, "name": "Milk 1 liter", "tags": "milk" },
+  { "id": 2, "name": "Candy 200g", "tags": "candy" }
+]
+```
+
+The potential product pool would look like this:
+```json
+[
+  { "id": 1, "name": "Milk 1 liter", "tags": "milk" },
+  { "id": 2, "name": "Candy 200g", "tags": "candy" },
+  { "id": 2, "name": "Candy 200g", "tags": "candy" }
+]
+```
+
+For each day, we specified amount of products randomly from the potential product pool. It's
+random, and with good/bad luck the user could buy only 10x Candy 200g.
+
+Tags might have overlapping products, but the generator doesn't compansate this in any way.
+
+This output will be saved under [src/data/generated](src/data/generated) directory. It's automatically
+generated file, but it won't be uploaded to Aito.
+
+
+### Step 2: sessions and impressions
+
+Based on [weeklySchedule.json](src/data/generated/weeklySchedule.json), we simulate 8 weeks of "life",
+where users visit (1 visit = **1 session**) the grocery store each day. On each visit, the
+user sees for example 20 products, and purchases 10 of them. Whenever user sees a product, it's called
+an **impression**. The impression may have two outcomes: either they purchase the product or not.
+
+On each visit, the user sees more products than they actually purchase. The products which user
+does *not* purchase, are randomly selected from the products which are missing from their potential
+product pool.
+
+The output files *users.json*, *impressions.json* and *sessions.json* will be saved under
+[src/data/aito](src/data/aito) directory. [src/data/products.json](src/data/products.json) is
+also copied under the same directory. Each file in the directory corresponds one table in Aito.
+
+
+### Running generator
+
+To generate the data, you can use a commandline tool. The tool will pretty print the generated
+data in a format which might be a bit more readable then the raw output json files.
+The normal workflow goes like this:
+
+1. Run `node src/generator/index.js --info` to understand what tags and products are available
+1. Update products.json or preferences.json
+1. Regenerate everything
+1. Make sure the generated weeklySchedules.json looks as expected. It is generated based on preferences.json.
+
+
+**Regenerate everything**
+```bash
+node src/generator/index.js
+```
+
+**List all tags and products**
+
+This is useful when creating new user "taste" profiles.
+
+```bash
+node src/generator/index.js --info
+```
+
+**Regenerate only the weeklySchedule.json**
+
+This is more useful for debugging the process.
+
+```bash
+node src/generator/index.js --only-weekly-schedules
+```
+
+**See help**
+
+```bash
+node src/generator/index.js -h
 ```

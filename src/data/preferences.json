@@ -1,0 +1,38 @@
+[
+  {
+    "username": "veronica",
+    "preferences": [
+      { "tag": "vegetable", "howMuchThePersonLikesTheseProducts": 5 },
+      { "tag": "fresh", "howMuchThePersonLikesTheseProducts": 4 },
+      { "tag": "coffee", "howMuchThePersonLikesTheseProducts": 3 },
+      { "tag": "tomato", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "bread", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "candy", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 },
+      { "tag": "drink", "howMuchThePersonLikesTheseProducts": 1 }
+    ]
+  },
+  {
+    "username": "larry",
+    "preferences": [
+      { "tag": "lactose-free", "howMuchThePersonLikesTheseProducts": 5 },
+      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 3 },
+      { "tag": "food", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "vegetable", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "bread", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "coffee", "howMuchThePersonLikesTheseProducts": 1 },
+      { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 }
+    ]
+  },
+  {
+    "username": "alice",
+    "preferences": [
+      { "tag": "pirkka", "howMuchThePersonLikesTheseProducts": 5 },
+      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 4 },
+      { "tag": "news", "howMuchThePersonLikesTheseProducts": 4 },
+      { "tag": "food", "howMuchThePersonLikesTheseProducts": 3 },
+      { "tag": "sausage", "howMuchThePersonLikesTheseProducts": 3 },
+      { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 }
+    ]
+  }
+]
