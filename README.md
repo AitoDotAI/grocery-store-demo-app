@@ -37,8 +37,10 @@ The aim of this demo is not to show you how Aito is able to handle large dataset
 | userBehavior  | "Analytics" data with user actions in a given setting  | 3805 |
 | decisions  | Individual decisions for products   | 63341 |
 
+
 ### Setting
-The exercises are focussing on these features:
+
+The exercises are focusing on these features:
 
 - Recommendations based on the users’ previous shopping behaviour
 - Dynamic recommendations – Aito won’t show you any recommendations if the products are already in your shopping basket
@@ -52,9 +54,12 @@ The exercises are focussing on these features:
 
 ## Exercise 1: Smart search
 
-* Open 01-search.js
-* Edit the code to execute an Aito query, below you can find an example query
+* Open [src/01-search.js](src/01-search.js)
+* Edit the code so that it executes an Aito query, below you can find a few examples
 
+### 1st iteration
+
+Query which does a simple text matching without personalisation.
 
 ```js
 import axios from 'axios'
@@ -78,12 +83,43 @@ export function getProductSearchResults(userId, inputValue) {
 }
 ```
 
+### 2nd iteration
+
+Query which personalises the results based on the user's previous shopping behavior.
+
+```js
+import axios from 'axios'
+
+export function getProductSearchResults(userId, inputValue) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
+    from: 'decisions',
+    where: {
+      'product.name': { "$match": inputValue },
+      'behavior.user': userId
+    },
+    recommend: 'product',
+    goal: { 'purchase': true },
+    limit: 5
+  }, {
+    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+  })
+    .then(response => {
+      return response.data.hits
+    })
+}
+```
+
 
 ## Exercise 2: Recommend products
 
-* Open 02-recommend.js
-* Edit the code to execute an Aito query, below you can find an example query
+* Open [src/02-recommend.js](src/02-recommend.js)
+* Edit the code so that it executes an Aito query, below you can find a few examples
 
+### 1st iteration
+
+This query returns products which are not in the current shopping basket, but the
+results are not personalised for a single user. The returned products would be
+the most popular products across users.
 
 ```js
 import axios from 'axios'
@@ -108,12 +144,46 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
 }
 ```
 
+### 2nd iteration
+
+We simply add `'behavior.user': String(userId)` filter in the query, to get
+personalised results.
+
+```js
+import axios from 'axios'
+
+export function getRecommendedProducts(userId, currentShoppingBasket, count) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
+    from: 'decisions',
+    where: {
+      'behavior.user': String(userId),
+      'product.id': {
+        $and: currentShoppingBasket.map(item => ({ $not: item.id })),
+      }
+    },
+    recommend: 'product',
+    goal: { 'purchase': true },
+    limit: count
+  }, {
+    headers: {
+      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+    },
+  })
+    .then(result => {
+      return result.data.hits
+    })
+}
+```
+
 
 ## Exercise 3: Get tag suggestions
 
-* Open 03-get-tag-suggestions.js
-* Edit the code to execute an Aito query, below you can find an example query
+* Open [src/03-get-tag-suggestions.js](src/03-get-tag-suggestions.js)
+* Edit the code so that it executes an Aito query, below you can find a few examples
 
+### 1st iteration
+
+Query which predicts the most likely tags for a given product name.
 
 ```js
 import axios from 'axios'
@@ -132,6 +202,36 @@ export function getTagSuggestions(productName) {
   })
     .then(response => {
       return response.data.hits.map(hit => hit.feature)
+    })
+}
+```
+
+### 2nd iteration
+
+This iteration can be useful in some cases. We add a filter for the probability,
+to get only the tags we're most confident about.
+
+```js
+import axios from 'axios'
+
+export function getTagSuggestions(productName) {
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_predict', {
+    from: 'products',
+    where: {
+      name: productName
+    },
+    predict: 'tags',
+    exclusiveness: false,
+    limit: 10
+  }, {
+    headers: {
+      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+    },
+  })
+    .then(response => {
+      return response.data.hits
+        .filter(e => e.$p > 0.5)  // Filter out results which are not very strong
+        .map(hit => hit.feature)
     })
 }
 ```

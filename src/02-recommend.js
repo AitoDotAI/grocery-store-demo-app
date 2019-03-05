@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import products from './data/products.json'
 
-
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
   // Very simple, doesn't take user into account
 
