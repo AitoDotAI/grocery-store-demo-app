@@ -28,7 +28,11 @@ You can see the full product list via this link: https://github.com/AitoDotAI/gr
 
 The aim of this demo is not to show you how Aito is able to handle large datasets, but rather how a very basic grocery store app could be built and made intelligent by using Aito.
 
-![Data setup diagram](./design/aito-grocery-store.svg)
+<br>
+
+![Data setup diagram](./docs/aito-grocery-store.svg)
+
+<br>
 
 | Table  | Description | Number of entries |
 | ------------- | ------------- |:------:|
