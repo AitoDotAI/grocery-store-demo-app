@@ -21,10 +21,19 @@ The application acts as a template for the Hacktalks workshop. The purpose is to
 by moving over the functionality to Aito. The aim is to show how easy it is to improve the application by using Aito.
 
 ### The data
-For the scope of this exercise, there is only a limited data set with 42 products available. The low number of products is intentional to restrict the scope and
-make the examples easy to understand. Applying machine learning to such a limited set of products comes with certain restrictions, and the results reflect these facts.
 
-You can see the full product list via this link: https://github.com/AitoDotAI/grocery-store-demo-app/blob/master/src/data/products.json
+For the scope of this exercise, there is only a limited data set with 42 products available.
+
+The analytics data has been generated automatically, by simulating a few months of "life".
+The simulation is configured with a weekly purchase schedule located here:
+[src/generator/config.js](src/generator/config.js).
+
+The low number of products is intentional to restrict the scope and
+make the examples easy to understand. Applying machine learning to such a
+limited set of products comes with certain restrictions, and the results
+reflect these facts.
+
+You can see the full product list via this link in [src/data/products.json](src/data/products.json).
 
 The aim of this demo is not to show you how Aito is able to handle large datasets, but rather how a very basic grocery store app could be built and made intelligent by using Aito.
 
@@ -36,10 +45,30 @@ The aim of this demo is not to show you how Aito is able to handle large dataset
 
 | Table  | Description | Number of entries |
 | ------------- | ------------- |:------:|
-| users  | All known users. Key users: `larry`, `veronica`, `alice` | 67 |
-| products  | All the products sold in the store | 42 |
-| userBehavior  | "Analytics" data with user actions in a given setting  | 3805 |
-| decisions  | Individual decisions for products   | 63341 |
+| users  | All known users. Key users: `larry`, `veronica`, `alice` | 3 |
+| products  | All the products in the store | 42 |
+| sessions  | Each session/visit per user | TODO |
+| impressions  | All products a user has seen in a session, and if they bought it or not.  | TODO |
+
+
+#### Generation flow
+
+The generation works like this:
+
+* Read generator configuration
+* Simulate 8 weeks of "life" with the configured weekly purchase. For each user:
+  * For each day in the weekly purchases:
+    * Start a `session`(=website visit) for the user
+    * For each product:
+       * Find related products which has at least one of the tags the product has. Add those to "related products" pool
+    * Remove the products which user are buying that day from the "related products" pool
+    * Mark all related products in `impressions`, so that the user has seen them, but not purchased.
+    * Mark all products for the day in `impressions`, so that the user has seen them, and purchased them
+    * End the `session`
+
+This is a very simple but understandable simulation.
+
+
 
 
 ### Setting
