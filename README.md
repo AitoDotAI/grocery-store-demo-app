@@ -47,7 +47,7 @@ The exercises are focussing on these features:
 
 **Links:**
 
-* [API Documentation](https://aito-grocery-store.api.aito.ai/docs/v1/api/index.html)
+* [API Documentation](https://aito.ai/docs/api)
 
 
 ## Exercise 1: Smart search
