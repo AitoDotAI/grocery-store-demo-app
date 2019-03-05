@@ -72,7 +72,7 @@ class RecommendedProducts extends Component {
 
         <ProductList
           currentCart={props.cart}
-          emptyText="No more recommandations found"
+          emptyText="No more recommendations found"
           items={state.recommendedProducts}
           onItemAddedToCart={this.onItemAddedToCart}
           onItemRemovedFromCart={this.onItemRemovedFromCart}
