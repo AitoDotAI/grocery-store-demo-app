@@ -1,5 +1,8 @@
 # Aito Grocery Store Demo App
 
+* Simple version: https://aito-grocery-store-demo-app.netlify.com/
+* Smarter version: https://aito-grocery-store-demo-app-smart.netlify.com/. Integrates to Aito and provides personalised features.
+
 **Install**:
 
 * Install https://nodejs.org/en/
