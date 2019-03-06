@@ -1,7 +1,11 @@
 # Aito Grocery Store Demo App
 
-* Simple version: https://aito-grocery-store-demo-app.netlify.com/
-* Smarter version: https://aito-grocery-store-demo-app-smart.netlify.com/. Integrates to Aito and provides personalised features.
+**There are two hosted versions of the app**
+
+Link | Branch | Description
+-------- | ---------------
+[Simple](https://aito-grocery-store-demo-app.netlify.com/) | master |  Starting point. Simple functionality without Aito-integration
+[Aito-integrated](https://aito-grocery-store-demo-app-smart.netlify.com/) | smart | Integrates to Aito and provides personalised features. The app has been modified to use the 2nd iterations of each excercise.
 
 **Install**:
 
