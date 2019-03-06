@@ -15,8 +15,8 @@
   {
     "username": "larry",
     "preferences": [
-      { "tag": "lactose-free", "howMuchThePersonLikesTheseProducts": 5 },
-      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 3 },
+      { "tag": "lactose-free", "howMuchThePersonLikesTheseProducts": 10 },
+      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 2 },
       { "tag": "food", "howMuchThePersonLikesTheseProducts": 2 },
       { "tag": "vegetable", "howMuchThePersonLikesTheseProducts": 2 },
       { "tag": "bread", "howMuchThePersonLikesTheseProducts": 2 },
