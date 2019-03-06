@@ -92,7 +92,7 @@ export function getProductSearchResults(userId, inputValue) {
     },
     limit: 5
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits
@@ -118,7 +118,7 @@ export function getProductSearchResults(userId, inputValue) {
     goal: { 'purchase': true },
     limit: 5
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits
@@ -153,7 +153,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
     goal: { 'purchase': true },
     limit: count
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(result => {
       return result.data.hits
@@ -183,7 +183,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
     limit: count
   }, {
     headers: {
-      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+      'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9'
     },
   })
     .then(result => {
@@ -215,7 +215,7 @@ export function getTagSuggestions(productName) {
     exclusiveness: false,
     limit: 3
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits.map(hit => hit.feature)
@@ -242,7 +242,7 @@ export function getTagSuggestions(productName) {
     limit: 10
   }, {
     headers: {
-      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+      'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9'
     },
   })
     .then(response => {
