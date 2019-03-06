@@ -11,7 +11,7 @@ export function getProductSearchResults(userId, inputValue) {
     goal: { 'purchase': true },
     limit: 5
   }, {
-    headers: { 'x-api-key': 'CHANGE_THIS' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits

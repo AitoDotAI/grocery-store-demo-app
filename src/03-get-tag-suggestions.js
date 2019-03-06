@@ -11,7 +11,7 @@ export function getTagSuggestions(productName) {
     limit: 10
   }, {
     headers: {
-      'x-api-key': 'CHANGE_THIS'
+      'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9'
     },
   })
     .then(response => {
