@@ -15,11 +15,11 @@
   {
     "username": "larry",
     "preferences": [
-      { "tag": "lactose-free", "howMuchThePersonLikesTheseProducts": 10 },
-      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 2 },
-      { "tag": "food", "howMuchThePersonLikesTheseProducts": 2 },
-      { "tag": "vegetable", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "lactose-free", "howMuchThePersonLikesTheseProducts": 30 },
       { "tag": "bread", "howMuchThePersonLikesTheseProducts": 2 },
+      { "tag": "vegetable", "howMuchThePersonLikesTheseProducts": 1 },
+      { "tag": "meat", "howMuchThePersonLikesTheseProducts": 1 },
+      { "tag": "food", "howMuchThePersonLikesTheseProducts": 1 },
       { "tag": "coffee", "howMuchThePersonLikesTheseProducts": 1 },
       { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 }
     ]

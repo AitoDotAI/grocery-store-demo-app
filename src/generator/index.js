@@ -36,19 +36,11 @@ async function main() {
   }
 
   const weeklySchedulesFilePath = path.join(REPO_ROOT, 'src/data/generated/weeklySchedules.json')
-  try {
-    data.weeklySchedules = await readJsonFile(weeklySchedulesFilePath)
-  } catch (e) {
-    console.log(`Unable to read weekly schedules from ${weeklySchedulesFilePath}, regenerating it ..`)
-  }
+  const weeklySchedules = generateWeeklySchedules(data, opts)
+  fs.writeFileSync(weeklySchedulesFilePath, jsonStringify(weeklySchedules))
+  console.log('Wrote weekly schedules to', weeklySchedulesFilePath)
 
-  if (opts.onlyWeeklySchedules || !data.weeklySchedules) {
-    const weeklySchedules = generateWeeklySchedules(data, opts)
-    fs.writeFileSync(weeklySchedulesFilePath, jsonStringify(weeklySchedules))
-    console.log('Wrote weekly schedules to', weeklySchedulesFilePath)
-
-    data.weeklySchedules = weeklySchedules
-  }
+  data.weeklySchedules = weeklySchedules
 
   if (opts.onlyWeeklySchedules) {
     return
