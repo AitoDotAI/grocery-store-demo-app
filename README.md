@@ -109,10 +109,10 @@ import axios from 'axios'
 
 export function getProductSearchResults(userId, inputValue) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
       'product.name': { "$match": inputValue },
-      'behavior.user': userId
+      'session.user': userId
     },
     recommend: 'product',
     goal: { 'purchase': true },
@@ -143,7 +143,7 @@ import axios from 'axios'
 
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
       'product.id': {
         $and: currentShoppingBasket.map(item => ({ $not: item.id })),
@@ -163,7 +163,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
 
 ### 2nd iteration
 
-We simply add `'behavior.user': String(userId)` filter in the query, to get
+We simply add `'session.user': String(userId)` filter in the query, to get
 personalised results.
 
 ```js
@@ -171,9 +171,9 @@ import axios from 'axios'
 
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
-      'behavior.user': String(userId),
+      'session.user': String(userId),
       'product.id': {
         $and: currentShoppingBasket.map(item => ({ $not: item.id })),
       }
