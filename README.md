@@ -92,7 +92,7 @@ export function getProductSearchResults(userId, inputValue) {
     },
     limit: 5
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits
@@ -109,16 +109,16 @@ import axios from 'axios'
 
 export function getProductSearchResults(userId, inputValue) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
       'product.name': { "$match": inputValue },
-      'behavior.user': userId
+      'session.user': userId
     },
     recommend: 'product',
     goal: { 'purchase': true },
     limit: 5
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits
@@ -143,7 +143,7 @@ import axios from 'axios'
 
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
       'product.id': {
         $and: currentShoppingBasket.map(item => ({ $not: item.id })),
@@ -153,7 +153,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
     goal: { 'purchase': true },
     limit: count
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(result => {
       return result.data.hits
@@ -163,7 +163,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
 
 ### 2nd iteration
 
-We simply add `'behavior.user': String(userId)` filter in the query, to get
+We simply add `'session.user': String(userId)` filter in the query, to get
 personalised results.
 
 ```js
@@ -171,9 +171,9 @@ import axios from 'axios'
 
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
   return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
-    from: 'decisions',
+    from: 'impressions',
     where: {
-      'behavior.user': String(userId),
+      'session.user': String(userId),
       'product.id': {
         $and: currentShoppingBasket.map(item => ({ $not: item.id })),
       }
@@ -183,7 +183,7 @@ export function getRecommendedProducts(userId, currentShoppingBasket, count) {
     limit: count
   }, {
     headers: {
-      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+      'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9'
     },
   })
     .then(result => {
@@ -215,7 +215,7 @@ export function getTagSuggestions(productName) {
     exclusiveness: false,
     limit: 3
   }, {
-    headers: { 'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ' },
+    headers: { 'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9' },
   })
     .then(response => {
       return response.data.hits.map(hit => hit.feature)
@@ -242,7 +242,7 @@ export function getTagSuggestions(productName) {
     limit: 10
   }, {
     headers: {
-      'x-api-key': 'FWuBYAfGzXa2a0FUreVPL6EqS01kbVnw9ABjJjSZ'
+      'x-api-key': 'bc4Ck3nDwM1ILVjNahNJL8hPEAzCes8t2vGMUyo9'
     },
   })
     .then(response => {
