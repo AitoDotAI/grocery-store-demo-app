@@ -5,6 +5,9 @@ const { printWeeklySchedules, printSessionsAndImpressions } = require('./info')
 
 const WEEKDAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
+// This could be improved by taking into account how many individual products are under a given
+// tag. If e.g. "lactose-free" has only 2 products, and "food" has 15 products, we need to
+// use a very high value in howMuchThePersonLikesTheseProducts to overrule the "food" tag.
 function generatePreferredProductsPool(userPreferences, products) {
   const allProducts = []
   _.forEach(userPreferences.preferences, (preference) => {
@@ -77,8 +80,6 @@ function getSimulatedOtherProducts(products, userSchedule, day, maxCount) {
     throw new Error(`Unable to find purchases for user ${userSchedule.username} for ${day}`)
   }
 
-  // Unique products which the person is purchasing on the given day
-  const uniqueProductIdsDay = _.uniq(_.map(dayPurchases.purchases, 'id'))
   // Unique products which the person purchases at least on one day(=they like these products)
   const allTimeProducts = _.flatMap(userSchedule.weeklyPurchases, w => w.purchases)
   const uniqueProductIdsAllTime = _.uniq(_.map(allTimeProducts, 'id'))
