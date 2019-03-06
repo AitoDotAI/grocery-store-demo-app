@@ -1,41 +1,38 @@
 {
   "schema": {
     "users": {
-      "type":"table",
+      "type": "table",
       "columns": {
-        "id"       : { "type" : "String" }
+        "username": { "type": "String" }
       }
     },
 
     "products": {
-      "type":"table",
+      "type": "table",
       "columns": {
         "id"          : { "type": "String" },
-        "name"        : { "type": "Text",  "analyzer": "English" },
+        "name"        : { "type": "Text", "analyzer": "English" },
         "category"    : { "type": "String" },
-        "price"       : { "type": "Decimal"},
-        "tags"        : { "type": "Text", "analyzer" : "Whitespace" }
+        "price"       : { "type": "Decimal" },
+        "tags"        : { "type": "Text", "analyzer": "Whitespace" }
       }
     },
 
-    "userBehavior" : {
-      "type":"table",
+    "sessions" : {
+      "type": "table",
       "columns": {
          "id"     : { "type" : "String" },
-         "user"   : { "type" : "String", "link":"users.id" },
-         "basket"      : { "type" : "String", "analyzer" : "Whitespace" },
-         "query"       : { "type" : "String", "analyzer" : "English" }
+         "user"   : { "type" : "String", "link": "users.username" }
       }
     },
 
-    "decisions" : {
-      "type":"table",
+    "impressions" : {
+      "type": "table",
       "columns": {
-        "behavior" : { "type": "String", "link":"userBehavior.id" },
-        "product"  : { "type" : "String", "link":"products.id" },
-        "purchase" : { "type" : "Boolean" }
+        "session"  : { "type": "String", "link": "sessions.id" },
+        "product"  : { "type": "String", "link": "products.id" },
+        "purchase"   : { "type": "Boolean" }
       }
     }
-
   }
 }
