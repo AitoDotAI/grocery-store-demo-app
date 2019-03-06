@@ -1,13 +1,23 @@
-import _ from 'lodash'
-import products from './data/products.json'
+import axios from 'axios'
 
 export function getRecommendedProducts(userId, currentShoppingBasket, count) {
-  // Very simple, doesn't take user into account
-
-  const notInBasket = _.filter(products, product => {
-    const isInBasket = _.findIndex(currentShoppingBasket, item => item.id === product.id) !== -1
-    return !isInBasket
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_recommend', {
+    from: 'impressions',
+    where: {
+      'session.user': String(userId),
+      'product.id': {
+        $and: currentShoppingBasket.map(item => ({ $not: item.id })),
+      }
+    },
+    recommend: 'product',
+    goal: { 'purchase': true },
+    limit: count
+  }, {
+    headers: {
+      'x-api-key': 'CHANGE_THIS'
+    },
   })
-
-  return _.take(notInBasket, count)
+    .then(result => {
+      return result.data.hits
+    })
 }

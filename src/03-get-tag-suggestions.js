@@ -1,14 +1,22 @@
-import _ from 'lodash'
-import products from './data/products.json'
+import axios from 'axios'
 
 export function getTagSuggestions(productName) {
-  const matchingProducts = _.filter(products, product => {
-    return product.name.toLowerCase().includes(productName.toLowerCase())
+  return axios.post('https://aito-grocery-store.api.aito.ai/api/v1/_predict', {
+    from: 'products',
+    where: {
+      name: productName
+    },
+    predict: 'tags',
+    exclusiveness: false,
+    limit: 10
+  }, {
+    headers: {
+      'x-api-key': 'CHANGE_THIS'
+    },
   })
-
-  // We could sort the tags based on the occurance, but for now we'll just use the first
-  // matching ones
-  const tags = _.uniq(_.flatten(_.map(matchingProducts, product => product.tags.split(' '))))
-
-  return _.take(tags, 3)
+    .then(response => {
+      return response.data.hits
+        .filter(e => e.$p > 0.5)  // Filter out results which are not very strong
+        .map(hit => hit.feature)
+    })
 }
