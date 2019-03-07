@@ -6,44 +6,44 @@
         "day": "monday",
         "purchases": [
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "2000503600002", "name": "Chiquita banana"},
-          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
-          {"id": "6410405181190", "name": "Pirkka Costa Rica filter coffee 500g UTZ"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
-          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
+          {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
+          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
+          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
           {"id": "6410405181190", "name": "Pirkka Costa Rica filter coffee 500g UTZ"},
-          {"id": "6411402202208", "name": "Fazer Puikula fullcorn rye bread 9 pcs/500g"},
+          {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
           {"id": "2000604700007", "name": "Cucumber Finland"}
         ]
       },
       {
         "day": "tuesday",
         "purchases": [
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6413467282508", "name": "Fazer Puikula fullcorn rye bread 330g"},
-          {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6410405216120", "name": "Pirkka lactose-free semi-skimmed milk drink 1l"},
-          {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6411401015090", "name": "Fazer Sininen milk chocolate slab 200g"},
-          {"id": "6408430000128", "name": "Valio semi-skimmed milk 1l"},
-          {"id": "6416453015234", "name": "Karl Fazer 200g Tyrkisk Peber chocolate"}
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6410405181190", "name": "Pirkka Costa Rica filter coffee 500g UTZ"},
+          {"id": "2000503600002", "name": "Chiquita banana"},
+          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"},
+          {"id": "2000503600002", "name": "Chiquita banana"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6413466080204", "name": "Oululainen reissumies dark rye bread 4pcs/280g"},
+          {"id": "2000818700008", "name": "Pirkka banana"},
+          {"id": "6411401015090", "name": "Fazer Sininen milk chocolate slab 200g"}
         ]
       },
       {
         "day": "wednesday",
         "purchases": [
           {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6411401019029", "name": "Geisha chocolate bar 37g"},
+          {"id": "6437002001454", "name": "VAASAN Ruispalat 660g 12 pcs fullcorn rye bread"},
           {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6411402202208", "name": "Fazer Puikula fullcorn rye bread 9 pcs/500g"},
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
           {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "2000818700008", "name": "Pirkka banana"},
+          {"id": "2000604700007", "name": "Cucumber Finland"},
           {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
+          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"}
         ]
       },
@@ -52,29 +52,29 @@
         "purchases": [
           {"id": "2000818700008", "name": "Pirkka banana"},
           {"id": "2000503600002", "name": "Chiquita banana"},
-          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"},
+          {"id": "6411401015090", "name": "Fazer Sininen milk chocolate slab 200g"},
           {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "2000604700007", "name": "Cucumber Finland"},
+          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
           {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6410405216120", "name": "Pirkka lactose-free semi-skimmed milk drink 1l"}
+          {"id": "2000604700007", "name": "Cucumber Finland"},
+          {"id": "2000503600002", "name": "Chiquita banana"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"}
         ]
       },
       {
         "day": "friday",
         "purchases": [
-          {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"},
+          {"id": "2000503600002", "name": "Chiquita banana"},
+          {"id": "6411401019029", "name": "Geisha chocolate bar 37g"},
           {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
-          {"id": "6410405181190", "name": "Pirkka Costa Rica filter coffee 500g UTZ"},
-          {"id": "6416453015234", "name": "Karl Fazer 200g Tyrkisk Peber chocolate"},
           {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
           {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
-          {"id": "6410405181190", "name": "Pirkka Costa Rica filter coffee 500g UTZ"},
-          {"id": "6410405082657", "name": "Pirkka Finnish semi-skimmed milk 1l"}
+          {"id": "6408180733260", "name": "Vaasan Ruispalat thin sliced rye bread 6pcs/195g"},
+          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
+          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
+          {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
+          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"}
         ]
       },
       {
@@ -82,28 +82,28 @@
         "purchases": [
           {"id": "2000503600002", "name": "Chiquita banana"},
           {"id": "2000818700008", "name": "Pirkka banana"},
+          {"id": "2000503600002", "name": "Chiquita banana"},
+          {"id": "6408180733260", "name": "Vaasan Ruispalat thin sliced rye bread 6pcs/195g"},
           {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6416453015234", "name": "Karl Fazer 200g Tyrkisk Peber chocolate"},
-          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
           {"id": "2000604700007", "name": "Cucumber Finland"},
-          {"id": "6408430000258", "name": "Valio eila™ Lactose-free semi-skimmed milk drink 1l"}
+          {"id": "2000503600002", "name": "Chiquita banana"}
         ]
       },
       {
         "day": "sunday",
         "purchases": [
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6411300164653", "name": "Juhla Mokka Dark Roast coffee 500g hj"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"},
-          {"id": "2000818700008", "name": "Pirkka banana"},
-          {"id": "6411401015090", "name": "Fazer Sininen milk chocolate slab 200g"},
-          {"id": "6420101441542", "name": "Kulta Katriina filter coffee 500g"},
-          {"id": "6410405216120", "name": "Pirkka lactose-free semi-skimmed milk drink 1l"},
-          {"id": "6411401015090", "name": "Fazer Sininen milk chocolate slab 200g"},
+          {"id": "6410405060457", "name": "Pirkka bio cherry tomatoes 250g international 1st class"},
+          {"id": "6416453015234", "name": "Karl Fazer 200g Tyrkisk Peber chocolate"},
+          {"id": "6437002001454", "name": "VAASAN Ruispalat 660g 12 pcs fullcorn rye bread"},
+          {"id": "6411300000494", "name": "Juhla Mokka coffee 500g sj"},
+          {"id": "6420256014134", "name": "Tupla Maxi chocolate bar 50g UTZ"},
+          {"id": "6437002001454", "name": "VAASAN Ruispalat 660g 12 pcs fullcorn rye bread"},
           {"id": "6410405093677", "name": "Pirkka iceberg salad Finland 100g 1st class"}
         ]
       }

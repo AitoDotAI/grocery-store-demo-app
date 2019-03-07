@@ -8,8 +8,7 @@
       { "tag": "tomato", "howMuchThePersonLikesTheseProducts": 2 },
       { "tag": "bread", "howMuchThePersonLikesTheseProducts": 2 },
       { "tag": "candy", "howMuchThePersonLikesTheseProducts": 2 },
-      { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 },
-      { "tag": "drink", "howMuchThePersonLikesTheseProducts": 1 }
+      { "tag": "fruit", "howMuchThePersonLikesTheseProducts": 1 }
     ]
   },
   {
