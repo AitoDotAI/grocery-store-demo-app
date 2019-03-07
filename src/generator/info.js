@@ -1,6 +1,25 @@
 const _ = require('lodash')
 const chalk = require('chalk')
+const Table = require('cli-table')
 const { getProductTags, findProductsWithTag, findProductById } = require('./util')
+
+function createCliTable(head) {
+  return new Table({
+    chars: {
+      'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': '',
+      'bottom': '' , 'bottom-mid': '' , 'bottom-left': '' , 'bottom-right': '',
+      'left': '' , 'left-mid': '' , 'mid': '' , 'mid-mid': '',
+      'right': '' , 'right-mid': '' , 'middle': ' ' ,
+    },
+    style: {
+      'padding-left': 2,
+      'padding-right': 0,
+      head: ['white'],
+      border: ['grey']
+    },
+    head,
+  })
+}
 
 function getUniqueTags(products) {
   return _.sortBy(_.uniq(_.flatMap(products, product => getProductTags(product))))
@@ -28,13 +47,15 @@ function printSessionsAndImpressions(data, sessions, impressions) {
   const impressionsBySessionId = _.groupBy(impressions, 'session')
   _.forEach(sessions, (session) => {
     console.log(chalk.bold(`${session.id}:`))
-    console.log('  productId      purchase  name')
+
+    const table = createCliTable(['productId', 'purchase', 'tags', 'name'])
     const impressions = impressionsBySessionId[session.id]
     _.forEach(impressions, (impression) => {
       const product = _.find(data.products, p => p.id === impression.product)
       const purchaseX = impression.purchase ? '[x]': '[ ]'
-      console.log(chalk.gray(`  ${product.id}  ${purchaseX}       ${product.name}`))
+      table.push([product.id, purchaseX, getProductTags(product).join(', '), product.name])
     })
+    console.log(chalk.gray(table.toString()))
     console.log('\n')
   })
 }
