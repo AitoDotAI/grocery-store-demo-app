@@ -20,7 +20,7 @@ This demo app has been created by Aito.ai for the purpose of showing features an
 The application was originally created for [Hacktalks Helsinki, on November the 22nd of November 2018](https://www.hacktalks.fi/). The app is for demonstration purposes only, so many
 special cases and error handling have been omitted in favour of readability and simplicity.
 
-The software is licensed under the Apache 2 license, so it can be cloned and modified at will. It can therefore be used as a template Aito client application.
+The demo software is licensed under the Apache 2 license, so it can be cloned and modified at will. It can therefore be used as a template Aito client application.
 We accept pull requests in case you find something obvious missing or broken.
 
 ## The exercise
