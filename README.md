@@ -1,3 +1,5 @@
+**NOTE: This example repository is not actively maintained. For later examples navigate to [Aito Docs](https://aito.ai/docs/).**
+
 # Aito Grocery Store Demo App
 
 **There are two hosted versions of the app**
